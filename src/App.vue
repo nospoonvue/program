@@ -8,7 +8,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="index.html" class="logo"><strong>Purposeful Learning Labs</strong></a>
+									<a href="index.html" class="logo"><strong>PROGRAM Labs</strong></a>
 									<ul class="icons">
 										<!-- <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>-->
 										<li><a href="https://www.facebook.com/frank.kroondijk" target="_blank" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -22,7 +22,7 @@
               					<router-view/>
 
 								<footer id="footer" style="text-align:center">
-									<p class="copyright">&copy; Purposeful learning labs.</p>
+									<p class="copyright">&copy; PROGRAM labs.</p>
 								</footer>
 						</div>
 					</div>

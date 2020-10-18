@@ -4,10 +4,10 @@
 								<section id="banner" class="banner">
 									<div class="content">
 										<header>
-											<h1>Learning with purpose</h1>
-											<p>What it is all aboutt</p>
+											<h1>Program labs</h1>
+											<p>Tada</p>
 										</header>
-										<p>The purposeful learning model turns things around. It is not the teacher who is leading the learning experience but the the context that does. The educators, together with the whole community, do facilitate the creation of the context.</p>
+										<p>blaat</p>
 										<ul class="actions">
 											<li><a href="#" class="button big">Learn More</a></li>
 										</ul>
