@@ -152,7 +152,7 @@ export default
         pageSize: 2,
         offsetHistory: [],  
         table: "Course",
-        view: "Main",
+        view: "Public",
         klaar:false
         }
     },
