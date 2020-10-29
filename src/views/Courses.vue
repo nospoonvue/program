@@ -6,16 +6,22 @@
     <section id="" class="post" v-for="item in data" :key="item.fields.Title">
         <br/>
         <div class="content" >
-            <header>
+            <header style="background-color: #2e2554;border-radius:.5em">
+                <!--
                 <Agile :slidesToShow="1" :dots="true" :navButtons="false" :key="item.fields.Visuals.length" :centerMode="true">
+                    -->
                     <div class="slide" v-for="item in  filterImages(item.fields.Visuals)" :key="item.url"  >
-                        <img v-bind:src="item.url" v-bind:alt="item.Title" style="width:100%" />
+                        <img v-bind:src="item.url" v-bind:alt="item.Title" style="max-width:100%; max-height:150px;border-radius:.5em;margin:0px;padding:0px" />
                     </div>
+                    <!--
                 </Agile>
-                <h2>{{ item.fields.Title }}</h2>
+                -->
+                
             </header>
+            <h2>{{ item.fields.Title }}</h2>
                 <p><vue-markdown>{{ item.fields.ShortDescription }}</vue-markdown></p>
-                <h5>ECTS: {{ item.fields.ECTS }} </h5>         
+                <h5>ECTS: {{ item.fields.ECTS }} </h5> 
+                <br/>        
             <ul class="actions">
                 <li><router-link :to="'/course/'+item.fields.LinkName" class="button big">Learn More</router-link></li>
    
@@ -149,7 +155,7 @@ export default
         status: "",
         offset: "",
         offsetHistoryCursor: 0,
-        pageSize: 2,
+        pageSize: 10,
         offsetHistory: [],  
         table: "Course",
         view: "Public",
@@ -173,6 +179,8 @@ export default
             getData(this);
         },
         filterImages: function (visuals) {
+            if(!visuals)return;
+            
             return visuals.filter(function (image) {
             return  image.url.includes("736x512");  
             })

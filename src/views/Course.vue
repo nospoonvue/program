@@ -4,9 +4,9 @@
 
     <section  v-if="!selectedSection && !selectedSubject && showCourseInfo">
         
-        <span class="image main">
+        <span class="image main" style="background-color: #2e2554;border-radius:.5em;">
             <div class="" v-for="item in filterImages" :key="item.Title" >
-                <img v-bind:src="item.url" v-bind:alt="item.Title" />
+                <img v-bind:src="item.url" v-bind:alt="item.Title" style="max-width:500px;max-height:200px;display: block; margin-left: auto; margin-right: auto; height: auto;"/>
             </div>
             
         </span>
