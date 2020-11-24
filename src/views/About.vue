@@ -1,6 +1,10 @@
 <template>
-  <div class="about">
+  <div class="about" >
+    <div style="width:100%">
+      <br/>
     <h1>About PROGRAM</h1>
+    </div>
+    <div style="column-count: 2;">
     <p>
       Makerspaces have a significant impact on the learning of students, the development of entrepreneurial skills and the personal development.
 </p><p>
@@ -14,5 +18,7 @@ Great makerspaces democratize learning. Yet, we need to hear more discussion abo
 </p><p>
 We are convinced that MakerSpaces are in the unique position of offering training and education to these youngsters and motivate them not becoming a NEET. We believe that MakerSpaces can also enhance entrepreneurial skills among this NEET target group.
       </p>
+      
+      </div>
   </div>
 </template>

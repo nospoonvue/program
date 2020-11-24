@@ -92,7 +92,7 @@ body {
 /* Type */
 body, input, select, textarea {
   color: #7f888f;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'raleway-medium', sans-serif;;
   font-size: 13pt;
   font-weight: 400;
   line-height: 1.65; }
@@ -133,7 +133,7 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
   color: #3d4449;
-  font-family: "PT Sans Narrow", serif;
+  font-family: 'opensans-semibold', sans-serif;
   font-weight: 700;
   line-height: 1.5;
   margin: 0 0 0 0; }
