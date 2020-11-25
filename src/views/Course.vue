@@ -16,10 +16,14 @@
         </div>
       </span>
       <h1>{{ course.Title }}</h1>
-      <blockquote>{{ course.ShortDescription }}</blockquote>
+      <blockquote><vue-markdown         :source="course.ShortDescription"      ></vue-markdown></blockquote>
 
       <h3>Description</h3>
-      <p>{{ course.FullDescription }}</p>
+      
+      <p>
+
+             <vue-markdown         :source="course.FullDescription"      ></vue-markdown>
+
       <p />
       <hr class="major" />
     </section>
