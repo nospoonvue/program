@@ -14,8 +14,8 @@
 										<li><a href="https://www.facebook.com/frank.kroondijk" target="_blank" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
 										<li><a href="https://www.linkedin.com/in/frankkroondijk/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
 										<li><a href="https://www.instagram.com/frankkroondijk/" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<!-- <li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>		-->
-                   						<li><nav id="nav"><router-link to="/login"><div id="un">{{loginLabel}}</div></router-link></nav></li>
+										<!-- <li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>		
+                   						<li><nav id="nav"><router-link to="/login"><div id="un">{{loginLabel}}</div></router-link></nav></li>-->
 									</ul>
 								</header>
 

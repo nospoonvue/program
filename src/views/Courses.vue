@@ -3,40 +3,36 @@
     
     <Status class="StatusShow" v-bind:img="status" v-show="loading" />
 
-    <section id="" class="post" v-for="item in data" :key="item.fields.Title">
-        <br/>
-        <div class="content" >
-            <header style="background-color: #2e2554;border-radius:.5em">
-                <!--
-                <Agile :slidesToShow="1" :dots="true" :navButtons="false" :key="item.fields.Visuals.length" :centerMode="true">
-                    -->
+    <section id="" class="post" v-for="item in data" :key="item.fields.Title" style="float:left;">
+		<div class="" style="max-width:400px;margin:10px; height:500px;  display: flex; flex-direction: column;  justify-content: space-between;" >
+			<article>
+
                     <div class="slide" v-for="item in  filterImages(item.fields.Visuals)" :key="item.url"  >
                         <img v-bind:src="item.url" v-bind:alt="item.Title" style="max-width:100%; max-height:150px;border-radius:.5em;margin:0px;padding:0px" />
                     </div>
-                    <!--
-                </Agile>
-                -->
-                
-            </header>
-            <h2>{{ item.fields.Title }}</h2>
-                <p><vue-markdown>{{ item.fields.ShortDescription }}</vue-markdown></p>
-                <h5>ECTS: {{ item.fields.ECTS }} </h5> 
-                <br/>        
-            <ul class="actions">
-                <li><router-link :to="'/course/'+item.fields.LinkName" class="button big">Learn More</router-link></li>
-   
-            </ul>
-        </div>
+				<h3>{{ item.fields.Title }}</h3>
+				        <vue-markdown>{{ item.fields.ShortDescription }}</vue-markdown>
+			</article>
 
+            <div style="">           
+				<ul class="actions">
+					<li><a href="#" class="button">Learn more</a></li>
+				</ul>
+            </div>
+		</div>
     </section>
+
     <section class="">
-    <div id="pages" style="text-align:center" v-show="ready">
-        <p><button  :disabled='backDisabled' v-on:click="backward">previous page</button> | <button  :disabled='forwardDisabled' v-on:click="forward">next page</button></p>
-    </div>
+		<div id="pages" style="text-align:center" v-show="ready">
+			<p><button  :disabled='backDisabled' v-on:click="backward">previous page</button> | <button  :disabled='forwardDisabled' v-on:click="forward">next page</button></p>
+		</div>
     </section>
+
 </div>
 </template>
 
+
+  
 
 <style >
 
@@ -158,7 +154,7 @@ export default
         pageSize: 10,
         offsetHistory: [],  
         table: "Course",
-        view: "Public",
+        view: "Moocs",
         klaar:false
         }
     },

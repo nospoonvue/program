@@ -1,50 +1,190 @@
 <template>
-  <div class="about">
-    <div style="width:100%;">
-      <br />
-      <h1>DAY PROGRAM</h1>
-    </div>
-    <div style="width:100%;">
-      <div style="width:30%;float: left;">
-        <p>
-          Makerspaces have a significant impact on the learning of students, the
-          development of entrepreneurial skills and the personal development.
-        </p>
-        <p>
-          The number of Fablabs and MakerSpaces in Europe has increased greatly
-          in the last decade. And that’s a good thing because Makerspaces work
-          towards democratizing access to technology and often have the aim to
-          also actively support the future of young people.
-        </p>
+  <div id="courses">
+    <Status class="StatusShow" v-bind:img="status" v-show="loading" />
+
+    <section
+      id=""
+      class="post"
+      v-for="item in data"
+      :key="item.fields.Title"
+      style="float:left;  padding-top:5px;"
+    >
+      <div
+        class=""
+        style="max-width:400px;margin:10px;   display: flex; flex-direction: column;  justify-content: space-between;"
+      >
+        <article>
+          <div
+            class="slide"
+            v-for="item in filterImages(item.fields.Visuals)"
+            :key="item.url"
+          >
+            <img
+              v-bind:src="item.url"
+              v-bind:alt="item.Title"
+              style="max-width:100%; max-height:150px;border-radius:.5em;margin:0px;padding:0px"
+            />
+          </div>
+          <div style="  padding-top:5px;">
+          <h3>{{ item.fields.Title }}</h3>
+          <vue-markdown>{{ item.fields.ShortDescription }}</vue-markdown>
+          </div>
+        </article>
+
+
       </div>
-      <div style="width:30%;float: left;">
-        <p>
-          The benefits of educational makerspaces are numerous and diverse.
-          While they do not come without their challenges, makerspaces can have
-          a significant impact on student learning and development.
-        </p>
-        <p>
-          A true makerspace offers student-driven opportunity for open-ended
-          exploration for everyone. A great makerspace is personalized, deep
-          (allowing deeper learning), empowering, equitable, differentiated,
-          intentional and inspiring.
-        </p>
-      </div>
-      <div style="width:30%;float: left;">
-        <p>
-          Great makerspaces democratize learning. Yet, we need to hear more
-          discussion about how these spaces can be used by all learning groups,
-          in particular pupils and students that are missing motivation and are
-          at risk to leave school and become a NEET (not in Education,
-          Employment or Training).
-        </p>
-        <p>
-          We are convinced that MakerSpaces are in the unique position of
-          offering training and education to these youngsters and motivate them
-          not becoming a NEET. We believe that MakerSpaces can also enhance
-          entrepreneurial skills among this NEET target group.
-        </p>
-      </div>
-    </div>
+    </section>
+
+
   </div>
 </template>
+
+<style>
+.agile {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+.slide {
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+
+}
+
+.agile__nav-button:hover {
+  color: #ff0000;
+}
+.agile__dot {
+  margin: 10px 10px;
+}
+.agile__dot button {
+  background-color: #eee;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: block;
+  height: 10px;
+  font-size: 0;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  width: 10px;
+}
+.agile__dot--current button,
+.agile__dot:hover button {
+  background-color: #ff0000;
+}
+</style>
+
+<script>
+import axios from "axios";
+import Status from "@/components/Status.vue";
+import VueMarkdown from "vue-markdown";
+import { VueAgile } from "vue-agile";
+
+async function getData(viewStatus) {
+  const config = {
+    headers: {},
+  };
+  var settings = {
+    table: viewStatus.table,
+    view: viewStatus.view,
+    pageSize: viewStatus.pageSize,
+    offset: viewStatus.offset,
+    fields: ["Title", "ShortDescription", "Visuals", "ECTS", "LinkName"],
+  };
+  //alert(JSON.stringify(settings));
+  const formData = new FormData();
+  formData.append("data", JSON.stringify(settings));
+  formData.append("action", "view");
+
+  viewStatus.loading = true;
+  await axios
+    .post(viewStatus.$baseUrl, formData, config)
+    .then((response) => {
+      viewStatus.data = response.data.records;
+      //alert(JSON.stringify(response.data));
+      if (response.data.offset) {
+        viewStatus.offset = response.data.offset;
+        viewStatus.ready = true;
+      } else {
+        viewStatus.offset = "";
+      }
+      viewStatus.loading = false;
+    })
+    .catch(function(error) {
+      console.log("fooout:" + error);
+      //viewStatus.status = error;
+      viewStatus.ready = false;
+      viewStatus.loading = false;
+    });
+}
+
+export default {
+  name: "courses",
+  components: { Status, VueMarkdown, Agile: VueAgile },
+
+  data() {
+    return {
+      data: null,
+      ready: false,
+      loading: false,
+      status: "",
+      offset: "",
+      offsetHistoryCursor: 0,
+      pageSize: 10,
+      offsetHistory: [],
+      table: "Course",
+      view: "Trainings",
+      klaar: false,
+    };
+  },
+  methods: {
+    forward: function() {
+      this.offsetHistoryCursor++;
+      this.offsetHistory[this.offsetHistoryCursor] = this.offset;
+      getData(this);
+    },
+    backward: function() {
+      this.offsetHistoryCursor--;
+      if (this.offsetHistoryCursor < 0) this.offsetHistoryCursor = 0;
+      this.offset = this.offsetHistory[this.offsetHistoryCursor];
+      getData(this);
+    },
+    filterImages: function(visuals) {
+      if (!visuals) return;
+
+      return visuals.filter(function(image) {
+        return image.url.includes("736x512");
+      });
+    },
+  },
+  computed: {
+    backDisabled: function() {
+      if (this.offsetHistoryCursor == 0) return true;
+      else return false;
+    },
+    forwardDisabled: function() {
+      // if(this.offset)
+      return (
+        (this.offsetHistoryCursor > 0 || this.offsetHistoryCursor == 0) &&
+        this.offset == ""
+      );
+    },
+  },
+  created() {
+    this.offsetHistory[0] = "";
+    getData(this);
+  },
+  mounted() {
+    this.klaar = true;
+  },
+};
+</script>
