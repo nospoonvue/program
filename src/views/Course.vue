@@ -25,7 +25,7 @@
             <ul class="actions">
                 <li>
                     <a href="#" class="button small" v-if="!showCourseInfo" v-on:click="showCourseInfo=true;selectedSection = null;selectedSubject=null" >Course overview</a>&nbsp;
-                    <a href="#" class="button small" onClick="$('#cMenu').html(''); $('#cMenu').hide(); $('#menu').show();" >Menu</a>
+                    <router-link to="/courses" onClick="$('#cMenu').html(''); $('#cMenu').hide(); $('#menu').show();" class="button small">Back to Courses</router-link>
                 </li>
             </ul>
 

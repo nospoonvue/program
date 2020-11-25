@@ -3,21 +3,22 @@
     
     <Status class="StatusShow" v-bind:img="status" v-show="loading" />
 
-    <section id="" class="post" v-for="item in data" :key="item.fields.Title" style="float:left;">
-		<div class="" style="max-width:400px;margin:10px; height:500px;  display: flex; flex-direction: column;  justify-content: space-between;" >
+    <section id="" class="post" v-for="item in data" :key="item.fields.Title" style="float:left;margin-top:8px;">
+		<div class="" style="max-width:400px;margin:10px;   display: flex; flex-direction: column;  justify-content: space-between;" >
 			<article>
-
+                    <router-link :to="'/course/'+item.fields.LinkName">
                     <div class="slide" v-for="item in  filterImages(item.fields.Visuals)" :key="item.url"  >
-                        <img v-bind:src="item.url" v-bind:alt="item.Title" style="max-width:100%; max-height:150px;border-radius:.5em;margin:0px;padding:0px" />
+                       <img v-bind:src="item.url" v-bind:alt="item.Title" style="max-width:100%; max-height:150px;border-radius:.5em;margin:0px;padding:0px" />
                     </div>
-				<h3>{{ item.fields.Title }}</h3>
-				        <vue-markdown>{{ item.fields.ShortDescription }}</vue-markdown>
+                    </router-link>
+				<h3 style="padding-top:4px;">{{ item.fields.Title }}</h3>
+				        <vue-markdown style="font-size:.8em;height:300px;">{{ item.fields.ShortDescription }}</vue-markdown>
 			</article>
 
             <div style="">           
-				<ul class="actions">
-					<li><a href="#" class="button">Learn more</a></li>
-				</ul>
+                <ul class="actions">
+                    <li><router-link :to="'/course/'+item.fields.LinkName" class="button big">Learn More</router-link></li>
+                </ul>
             </div>
 		</div>
     </section>
