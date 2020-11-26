@@ -132,10 +132,10 @@
 -->
 
 						</div>
-            							<!-- Footer
+            							
           <footer id="footer" style="text-align:center">
-            <p class="copyright">&copy; PROGRAM labs.</p>
-          </footer> -->
+            <p class="copyright">&nbsp;</p>
+          </footer>
 					</div>
 
 </template>

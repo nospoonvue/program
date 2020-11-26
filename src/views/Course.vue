@@ -19,12 +19,7 @@
       <blockquote><vue-markdown :source="course.ShortDescription" ></vue-markdown></blockquote>
 
       <h3>Description</h3>
-      
-      <p>
-
-             <vue-markdown         :source="course.FullDescription"      ></vue-markdown>
-
-      <p />
+      <vue-markdown         :source="course.FullDescription"      ></vue-markdown>
       <hr class="major" />
     </section>
 
@@ -109,13 +104,15 @@
       <div class="content" v-if="selectedSubject">
         <!--<header>-->
           <h1 style="margin-top:8px;margin-bottom:4px;">
-            {{ selectedSubject.fields.Title }}
+            {{ selectedSubject.fields.Title }}fsfs
           </h1>
-          <p class="contentstyle" style="margin-top:8px;margin-bottom:20px;">
-            <vue-markdown
+          <p class="contentstyle" >
+            <vue-markdown style="margin-top:8px;margin-bottom:20px;"
               :source="selectedSubject.fields.Description"
             ></vue-markdown>
+           
           </p>
+
        <!-- </header>-->
 
         <ul class="actions">
