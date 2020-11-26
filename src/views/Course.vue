@@ -16,7 +16,7 @@
         </div>
       </span>
       <h1>{{ course.Title }}</h1>
-      <blockquote><vue-markdown         :source="course.ShortDescription"      ></vue-markdown></blockquote>
+      <blockquote><vue-markdown :source="course.ShortDescription" ></vue-markdown></blockquote>
 
       <h3>Description</h3>
       
@@ -97,8 +97,8 @@
       <div class="content" v-if="selectedSection && !selectedSubject">
         <header>
           <h1>{{ selectedSection.fields.Title }}</h1>
-          <p style="" class="contentstyle">
-            <vue-markdown
+          <p style="" >
+            <vue-markdown class="contentstyle"
               :source="selectedSection.fields.Description"
             ></vue-markdown>
           </p>
@@ -107,7 +107,7 @@
 
       <!-- selected subject -->
       <div class="content" v-if="selectedSubject">
-        <header>
+        <!--<header>-->
           <h1 style="margin-top:8px;margin-bottom:4px;">
             {{ selectedSubject.fields.Title }}
           </h1>
@@ -116,7 +116,7 @@
               :source="selectedSubject.fields.Description"
             ></vue-markdown>
           </p>
-        </header>
+       <!-- </header>-->
 
         <ul class="actions">
           <li>
@@ -143,12 +143,17 @@
 .contentstyle {
   font-size: 0.8em;
   column-count: 2;
+  column-gap: 20px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 @media only screen and (max-width: 600px) {
   .contentstyle {
     font-size: 0.8em;
     column-count: 1;
+  text-align: justify;
+  text-justify: inter-word;
   }
 }
 </style>
