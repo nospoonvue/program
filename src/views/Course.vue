@@ -19,7 +19,7 @@
       <hr class="major" />
     </section>
 
-    <section id="" class="post">
+    <section id=""  >
       <!-- ********** menu ************* -->
       <!-- course menu -->
       <span class="object" style="width:300px;" id="courseMenu">
@@ -39,20 +39,14 @@
               >Course overview</a>
           </li>
         </ul>
-
-        <header class="major">
+       
           <h2>Section</h2>
-        </header>
         <div class="" v-for="section in sections" :key="section.fields.Title">
-          <div
-            v-on:click="toggleSection(section)"
-            style="cursor: pointer;display: inline-block;"
-          >
+          <div v-on:click="toggleSection(section)" style="cursor: pointer;display: inline-block;"> 
             <div style="display: inline-block;">
-                 <div style="color:#ffffff;font-size:1.2em;">
-              <i :id="'arrow' + section.id" class="fa fa-angle-double-down"></i>
-             
-              {{ section.fields.Order }}. {{ section.fields.Title }} 
+              <div style="color:#ffffff;font-size:1.0em;">
+                <i :id="'arrow' + section.id" class="fa fa-angle-double-down"></i>      
+                {{ section.fields.Order }}. {{ section.fields.Title }} 
               </div>
             </div>
           </div>
@@ -71,9 +65,7 @@
                   :checked="getStudentTrack(subject)"
                   @click.prevent
                 />
-                <label :for="subject.id" @click.prevent>{{
-                  subject.fields.Title
-                }}</label>
+                <label style="font-size:.9em;" :for="subject.id" @click.prevent>{{ subject.fields.Title }}</label>
               </div>
             </div>
           </div>
@@ -84,7 +76,7 @@
       <!-- ********** selected section ************* -->
       <!-- selected section -->
       <div class="content" v-if="selectedSection && !selectedSubject">
-          <span v-if="selectedSection.fields.Visuals" class="image main"  style="background-color: #2e2554;border-radius:.5em;">
+          <span v-if="selectedSection.fields.Visuals" class="image main" style="background-color: #2e2554;border-radius:.5em;">
            
             <div v-for="item in filterImagesFromSet(selectedSection.fields.Visuals)" :key="item.Title">
               <img v-bind:src="item.url" v-bind:alt="item.Title" style="max-width:500px;max-height:200px;display: block; margin-left: auto; margin-right: auto; height: auto;" />
@@ -124,7 +116,7 @@
               class="button small"
               v-on:click="nextSubject(selectedSubject, false)"
               >Next subject</a
-            ><a
+            >&nbsp;<a
               href="#"
               class="button small"
               v-on:click="nextSubject(selectedSubject, true)"
