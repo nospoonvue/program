@@ -15,22 +15,34 @@
       <hr class="major" />
     </section>
 
-    <section id="" style="">
+    <section id="" style="height:100px;">
       <!-- ********** menu ************* -->
-      <!-- course menu class="object" style="width:300px;"  {{ section.fields.Order }}.-->
+      <!-- course menu class="object" style="width:300px;"-->
       <span  id="courseMenu"  >
-
-        <router-link to="/courses" onClick="$('#cMenu').html(''); $('#cMenu').hide(); $('#menu').show();" class="button small" >Back to Courses</router-link>
+        <ul class="actions" >
+          <li>            
+            <router-link to="/courses" onClick="$('#cMenu').html(''); $('#cMenu').hide(); $('#menu').show();" class="button small" >Back to Courses</router-link>
             &nbsp;
-        <a href="#" class="button small" v-if="!showCourseInfo" v-on:click="showCourseInfo = true; selectedSection = null;selectedSubject = null; " lang="">Course overview</a>
-        <br/> &nbsp;<br/>
+            <a
+              href="#"
+              class="button small"
+              v-if="!showCourseInfo"
+              v-on:click="
+                showCourseInfo = true;
+                selectedSection = null;
+                selectedSubject = null;
+              "
+              >Course overview</a>
+          </li>
+        </ul>
+       
         <h2>Section</h2>
         <div class="" v-for="section in sections" :key="section.fields.Title" >
           <div v-on:click="toggleSection(section)" style="cursor: pointer;"> 
             <div style="">
               <div style="color:#ffffff;font-size:1.0em;">
                 <i :id="'arrow' + section.id" class="fa fa-angle-double-down"></i>      
-                {{ section.fields.Title }} 
+                {{ section.fields.Order }}. {{ section.fields.Title }} 
               </div>
             </div>
           </div>
@@ -483,8 +495,7 @@ export default {
     $("#courseMenu").appendTo("#cMenu");
     $("#cMenu").show();
     $("#menu").hide();
-   // alert($('.courseMenu'));
+    //alert($('.courseMenu'));
   },
-  
 };
 </script>
