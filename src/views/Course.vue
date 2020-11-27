@@ -89,8 +89,11 @@
       <!-- ********** selected section ************* -->
       <!-- selected section -->
       <div class="content" v-if="selectedSection && !selectedSubject">
-          <span class="image main"  style="background-color: #2e2554;border-radius:.5em;">
-            <img v-if="selectedSection.fields.Visuals" v-bind:src="selectedSection.fields.Visuals[0].url" v-bind:alt="selectedSection.fields.Title " style="max-width:500px;max-height:200px;display: block; margin-left: auto; margin-right: auto; height: auto;" />
+          <span v-if="selectedSection.fields.Visuals" class="image main"  style="background-color: #2e2554;border-radius:.5em;">
+           
+            <div v-for="item in filterImagesFromSet(selectedSection.fields.Visuals)" :key="item.Title">
+              <img v-bind:src="item.url" v-bind:alt="item.Title" style="max-width:500px;max-height:200px;display: block; margin-left: auto; margin-right: auto; height: auto;" />
+            </div>
           </span>
           <h1>{{ selectedSection.fields.Title }}</h1>
           <p style="" >
@@ -104,11 +107,13 @@
 
       <!-- ********** selected subject ************* -->
       <div class="content" v-if="selectedSubject">
-         <span class="image main"  style="background-color: #2e2554;border-radius:.5em;">
-            <img v-if="selectedSubject.fields.Visuals" v-bind:src="selectedSubject.fields.Visuals[0].url" v-bind:alt="selectedSection.fields.Title " style="max-width:500px;max-height:200px;display: block; margin-left: auto; margin-right: auto; height: auto;" />
+         <span class="image main" v-if="selectedSubject.fields.Visuals" style="background-color: #2e2554;border-radius:.5em;">
+            <div v-for="item in filterImagesFromSet(selectedSubject.fields.Visuals)" :key="item.Title">
+              <img v-bind:src="item.url" v-bind:alt="item.Title" style="max-width:500px;max-height:200px;display: block; margin-left: auto; margin-right: auto; height: auto;" />
+            </div>           
           </span>
           <h1 style="margin-top:8px;margin-bottom:4px;">
-            {{ selectedSubject.fields.Title }}fsfs
+            {{ selectedSubject.fields.Title }}
           </h1>
           <p class="contentstyle" >
             <vue-markdown style="margin-top:8px;margin-bottom:20px;" :source="selectedSubject.fields.Description"></vue-markdown>           
@@ -329,13 +334,18 @@ export default {
     },
   },
   methods: {
-    /*
-        filterImages: function (visuals) {
-            return visuals.filter(function (image) {
-            return  image.url.includes("736x512");  
-            })
-        },
-        */
+    filterImagesFromSet: function(imageSet) {
+      // alert(this.course.Visuals);
+      if (imageSet) 
+      {
+        return imageSet.filter(function(image) {
+          return image.url.includes("1280x416");
+        });
+  
+      } else {
+        return null;
+      }
+    },
     loadFullSubject: function(subject) {
       this.selectedSubject = subject;
     },
@@ -459,6 +469,8 @@ export default {
     },
   },
   computed: {
+
+
     filterImages: function() {
       // alert(this.course.Visuals);
       if (this.course.Visuals) {
