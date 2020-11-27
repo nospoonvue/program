@@ -8,27 +8,31 @@
         style="background-color: #2e2554;border-radius:.5em;"
       >
         <div class="" v-for="item in filterImages" :key="item.Title">
-          <img
-            v-bind:src="item.url"
-            v-bind:alt="item.Title"
-            style="max-width:500px;max-height:200px;display: block; margin-left: auto; margin-right: auto; height: auto;"
-          />
+          <img v-bind:src="item.url" v-bind:alt="item.Title" style="max-width:500px;max-height:200px;display: block; margin-left: auto; margin-right: auto; height: auto;" />
         </div>
       </span>
       <h1>{{ course.Title }}</h1>
       <blockquote><vue-markdown :source="course.ShortDescription" ></vue-markdown></blockquote>
 
-      <h3>Description</h3>
-      <vue-markdown   class="contentstyle"      :source="course.FullDescription"      ></vue-markdown>
+      <!--<h3>Description</h3>-->
+      <vue-markdown class="contentstyle" :source="course.FullDescription" ></vue-markdown>
       <hr class="major" />
     </section>
 
     <section id="" class="post">
+      <!-- ********** menu ************* -->
       <!-- course menu -->
       <span class="object" style="width:300px;" id="courseMenu">
         <ul class="actions">
-          <li>
-            <a
+          <li>            
+            <router-link
+              to="/courses"
+              onClick="$('#cMenu').html(''); $('#cMenu').hide(); $('#menu').show();"
+              class="button small"
+              >Back to Courses</router-link
+            >
+            &nbsp;
+                        <a
               href="#"
               class="button small"
               v-if="!showCourseInfo"
@@ -37,14 +41,7 @@
                 selectedSection = null;
                 selectedSubject = null;
               "
-              >Course overview</a
-            >&nbsp;
-            <router-link
-              to="/courses"
-              onClick="$('#cMenu').html(''); $('#cMenu').hide(); $('#menu').show();"
-              class="button small"
-              >Back to Courses</router-link
-            >
+              >Course overview</a>
           </li>
         </ul>
 
@@ -87,34 +84,38 @@
           </div>
         </div>
       </span>
+      <!-- ********** end menu ************* -->
 
+      <!-- ********** selected section ************* -->
       <!-- selected section -->
       <div class="content" v-if="selectedSection && !selectedSubject">
-        <header>
+          <span class="image main"  style="background-color: #2e2554;border-radius:.5em;">
+            <img v-if="selectedSection.fields.Visuals" v-bind:src="selectedSection.fields.Visuals[0].url" v-bind:alt="selectedSection.fields.Title " style="max-width:500px;max-height:200px;display: block; margin-left: auto; margin-right: auto; height: auto;" />
+          </span>
           <h1>{{ selectedSection.fields.Title }}</h1>
           <p style="" >
             <vue-markdown class="contentstyle"
               :source="selectedSection.fields.Description"
             ></vue-markdown>
           </p>
-        </header>
+        
       </div>
+      <!-- ********** end selected section ************* -->
 
-      <!-- selected subject -->
+      <!-- ********** selected subject ************* -->
       <div class="content" v-if="selectedSubject">
-        <!--<header>-->
+         <span class="image main"  style="background-color: #2e2554;border-radius:.5em;">
+            <img v-if="selectedSubject.fields.Visuals" v-bind:src="selectedSubject.fields.Visuals[0].url" v-bind:alt="selectedSection.fields.Title " style="max-width:500px;max-height:200px;display: block; margin-left: auto; margin-right: auto; height: auto;" />
+          </span>
           <h1 style="margin-top:8px;margin-bottom:4px;">
             {{ selectedSubject.fields.Title }}fsfs
           </h1>
           <p class="contentstyle" >
-            <vue-markdown style="margin-top:8px;margin-bottom:20px;"
-              :source="selectedSubject.fields.Description"
-            ></vue-markdown>
-           
-          </p>
+            <vue-markdown style="margin-top:8px;margin-bottom:20px;" :source="selectedSubject.fields.Description"></vue-markdown>           
+          </p>      
+        <!-- ********** end selected subject ************* -->
 
-       <!-- </header>-->
-
+        <!-- ********** paging  ************* -->
         <ul class="actions">
           <li>
             <a
@@ -130,6 +131,7 @@
             >
           </li>
         </ul>
+        <!-- ********** end paging  ************* -->
       </div>
     </section>
     <section></section>
@@ -145,13 +147,24 @@
   text-justify: inter-word;
 }
 
-@media only screen and (max-width: 600px) {
+.movie {
+  width:100%;
+  height:315px;
+
+
+}
+
+@media only screen and (max-width: 700px) {
   .contentstyle {
     font-size: 0.8em;
     column-count: 1;
   text-align: justify;
   text-justify: inter-word;
   }
+  .movie {
+  width:100%;
+  height:200px;
+}
 }
 </style>
 
