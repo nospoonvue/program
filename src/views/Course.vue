@@ -25,14 +25,9 @@
       <span class="object" style="width:300px;" id="courseMenu">
         <ul class="actions">
           <li>            
-            <router-link
-              to="/courses"
-              onClick="$('#cMenu').html(''); $('#cMenu').hide(); $('#menu').show();"
-              class="button small"
-              >Back to Courses</router-link
-            >
+            <router-link to="/courses" onClick="$('#cMenu').html(''); $('#cMenu').hide(); $('#menu').show();" class="button small" >Back to Courses</router-link>
             &nbsp;
-                        <a
+            <a
               href="#"
               class="button small"
               v-if="!showCourseInfo"
@@ -53,13 +48,13 @@
             v-on:click="toggleSection(section)"
             style="cursor: pointer;display: inline-block;"
           >
-            <h3 style="display: inline-block;">
-                 <div style="color:#ffffff;">
+            <div style="display: inline-block;">
+                 <div style="color:#ffffff;font-size:1.2em;">
               <i :id="'arrow' + section.id" class="fa fa-angle-double-down"></i>
              
               {{ section.fields.Order }}. {{ section.fields.Title }} 
               </div>
-            </h3>
+            </div>
           </div>
           <div :id="section.id" style="display:none">
             <div v-if="track || !user">
@@ -121,8 +116,9 @@
         <!-- ********** end selected subject ************* -->
 
         <!-- ********** paging  ************* -->
-        <ul class="actions">
-          <li>
+        <br/>
+        <div style="width:100%;text-align:center">
+
             <a
               href="#"
               class="button small"
@@ -134,8 +130,8 @@
               v-on:click="nextSubject(selectedSubject, true)"
               >Finish subject</a
             >
-          </li>
-        </ul>
+
+        </div>
         <!-- ********** end paging  ************* -->
       </div>
     </section>

@@ -133,9 +133,7 @@
 
 						</div>
             							
-          <footer id="footer" style="text-align:center">
-            <p class="copyright">&nbsp;</p>
-          </footer>
+
 					</div>
 
 </template>

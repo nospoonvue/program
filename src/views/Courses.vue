@@ -12,19 +12,17 @@
                     </div>
                     </router-link>
 				<h3 style="padding-top:4px;">{{ item.fields.Title }}</h3>
-				        <vue-markdown style="font-size:.8em;height:300px;">{{ item.fields.ShortDescription }}</vue-markdown>
+				        <vue-markdown style="font-size:.8em;height:280px;">{{ item.fields.ShortDescription }}</vue-markdown>
 			</article>
 
-            <div style="">           
-                <ul class="actions">
-                    <li><router-link :to="'/course/'+item.fields.LinkName" class="button big">Learn More</router-link></li>
-                </ul>
+            <div style="text-align:center;width:100%">           
+                    <router-link :to="'/course/'+item.fields.LinkName" class="button small">Learn More</router-link>
             </div>
 		</div>
     </section>
 
     <section class="">
-		<div id="pages" style="text-align:center" v-show="ready">
+		<div id="pages" style="text-align:center;width:100%" v-show="ready">
 			<p><button  :disabled='backDisabled' v-on:click="backward">previous page</button> | <button  :disabled='forwardDisabled' v-on:click="forward">next page</button></p>
 		</div>
     </section>
