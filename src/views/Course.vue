@@ -19,7 +19,7 @@
       <blockquote><vue-markdown :source="course.ShortDescription" ></vue-markdown></blockquote>
 
       <h3>Description</h3>
-      <vue-markdown         :source="course.FullDescription"      ></vue-markdown>
+      <vue-markdown   class="contentstyle"      :source="course.FullDescription"      ></vue-markdown>
       <hr class="major" />
     </section>
 
