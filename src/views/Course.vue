@@ -186,8 +186,6 @@ async function getData(viewStatus) {
               "Order",
               "Title",
               "Description",
-              "Order",
-              "Description",
               "Visuals",
               "NumberOfSubjects",
               "NumberOfSubjectsFinished",
@@ -208,7 +206,7 @@ async function getData(viewStatus) {
             table: "Subject",
             view: "Main",
             action: "view",
-            fields: ["Order", "Title", "Description", "Visuals", "Section"],
+            fields: ["Order", "Title", "Description", "Visuals", "Section", "Autonumber"],
             filter: '{Course}="' + viewStatus.courseName + '"',
             bind: "subject", //<-next step
           };
@@ -377,7 +375,7 @@ export default {
         //open new subject
         for (let thisSubject of this.subjects) {
           if (
-            thisSubject.fields.Order === this.selectedSubject.fields.Order &&
+            thisSubject.fields.Autonumber === this.selectedSubject.fields.Autonumber &&
             finishIt
           ) {
             //set as done
@@ -412,8 +410,8 @@ export default {
           }
 
           if (
-            thisSubject.fields.Order ===
-            this.selectedSubject.fields.Order + 1
+            thisSubject.fields.Autonumber ===
+            this.selectedSubject.fields.Autonumber + 1
           ) {
             this.selectedSubject = thisSubject;
             break;
