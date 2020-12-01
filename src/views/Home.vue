@@ -3,21 +3,19 @@
 							<!-- Banner -->
 								<section id="banner" class="banner">
 									<div class="content">
-										<header>
+									
 											<h1>TEACHER TRAINING</h1>
 											<p>Makerspaces have a significant impact on the learning of students, the development of entrepreneurial skills and the personal development.
 Subscribe to the online course if you want to learn how to use ánd apply design thinking, makers education (3D printing) and circular skills in your lessons.</p>
-										</header>
+									
 										<!--
 										<ul class="actions">
 											<li><a href="#" class="button big">Learn More</a></li>
 										</ul>
 										-->
 									</div>
-									<span class="image object">
-										<img src="images/programday.png" alt="" />
-
-
+									<span class=" ">
+										<img src="images/programday.png" alt="" style="width:100%" />
 									</span>
 								</section>
 
